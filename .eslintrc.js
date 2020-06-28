@@ -24,12 +24,7 @@ module.exports = {
         ecmaVersion: 2018,
         sourceType: 'module',
     },
-    plugins: [
-        'import',
-        '@typescript-eslint',
-        'prettier',
-        'simple-import-sort',
-    ],
+    plugins: ['import', '@typescript-eslint', 'prettier', 'simple-import-sort'],
     rules: {
         quotes: ['warn', 'single', { allowTemplateLiterals: true }],
         'no-console': 'warn',
@@ -53,12 +48,7 @@ module.exports = {
         'import/no-internal-modules': 'off',
         'import/newline-after-import': 'error',
         'import/no-useless-path-segments': 'error',
-        'import/order': [
-            'error',
-            {
-                groups: ['builtin', 'external', 'parent', 'index', 'sibling'],
-            },
-        ],
+        'import/order': 'off',
         '@typescript-eslint/no-unused-vars': 'error',
         '@typescript-eslint/explicit-member-accessibility': 'error',
         'prettier/prettier': 'off',
