@@ -4,7 +4,7 @@
   "description": "A Webpack loader that can dynamically replace code blocks with snippets extracted from source files.",
   "main": "lib/index.js",
   "scripts": {
-    "build:tsc": "tsc",
+    "build:tsc": "rm -r lib/; tsc",
     "test": "npm run build:tsc; jest"
   },
   "repository": {

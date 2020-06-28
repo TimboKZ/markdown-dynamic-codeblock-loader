@@ -5,7 +5,9 @@ import webpack from 'webpack';
 import {
     breakMarkdownIntoChunks,
     stitchMarkdownChunksIntoMarkdown,
-} from './chunk-util';
+} from './chunk-extraction';
+import { processCodeChunk } from './chunk-processing';
+import { ChunkType } from './types';
 import LoaderContext = webpack.loader.LoaderContext;
 
 const schema = {
@@ -28,6 +30,13 @@ export function loader(this: LoaderContext, source: string): string {
 
     const lines = source.split(LinebreakRegex);
     const chunks = breakMarkdownIntoChunks(lines);
+
+    for (const chunk of chunks) {
+        if (chunk.type !== ChunkType.Code) continue;
+
+        processCodeChunk(this, chunk);
+    }
+
     const transformedMarkdown = stitchMarkdownChunksIntoMarkdown(chunks);
 
     return `export default ${JSON.stringify(transformedMarkdown)}`;

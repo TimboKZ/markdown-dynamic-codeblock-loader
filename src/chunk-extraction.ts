@@ -1,6 +1,6 @@
 import { Chunk, ChunkType } from './types';
 
-const codeBlockStartRegex = /^\s*```([A-Za-z0-9\-_\s]+[A-Za-z0-9\-_])?\s*(.*?)$/;
+const codeBlockStartRegex = /^\s*```([A-Za-z0-9\-_]+)?\s*({\s*.*?\s*})\s*$/;
 const codeBlockEndRegex = /^\s*```\s*$/;
 
 export interface CodeblockData {
@@ -19,7 +19,7 @@ export function detectCodeBlocks(lines: string[]): CodeblockData[] {
     let blockStartIndex: number = -1;
     let blockLanguage: string = '';
     let blockJsonConfig: string = '';
-    const codeBlockIndices: CodeblockData[] = [];
+    const codeBlocks: CodeblockData[] = [];
 
     for (let lineIndex = 0; lineIndex < lines.length; lineIndex++) {
         const line = lines[lineIndex];
@@ -35,7 +35,7 @@ export function detectCodeBlocks(lines: string[]): CodeblockData[] {
         const codeEndMatch = line.match(codeBlockEndRegex);
         if (codeEndMatch) {
             if (insideCodeBlock) {
-                codeBlockIndices.push({
+                codeBlocks.push({
                     start: blockStartIndex,
                     end: lineIndex,
                     language: blockLanguage.trim(),
@@ -46,7 +46,7 @@ export function detectCodeBlocks(lines: string[]): CodeblockData[] {
         }
     }
 
-    return codeBlockIndices;
+    return codeBlocks;
 }
 
 /**

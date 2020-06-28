@@ -1,3 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Inserts name and outputs JavaScript 1`] = `"export default \\"# Interface tests raw input file\\\\n\\\\nThis file is used to test that the loader correctly replaces the code blocks below\\\\nwith the source snippets referenced in code block config.\\\\n\\\\n\`\`\`ts { \\\\\\"file\\\\\\", \\\\\\"../typescript-source/typedef.ts\\\\\\", \\\\\\"symbol\\\\\\": \\\\\\"MyData\\\\\\" }\\\\n\`\`\`\\\\n\\\\n\\""`;
+exports[`Inserts name and outputs JavaScript 1`] = `
+"# Interface tests raw input file
+
+This file is used to test that the loader correctly replaces the code blocks below
+with the source snippets referenced in code block config.
+
+\`\`\`ts { \\"file\\", \\"../typescript-source/typedef.ts\\", \\"symbol\\": \\"MyData\\" }
+An error occurred while parsing the JSON config for this code block:
+> Unexpected token , in JSON at position 8
+The JSON config was:
+{ \\"file\\", \\"../typescript-source/typedef.ts\\", \\"symbol\\": \\"MyData\\" }
+\`\`\`
+
+"
+`;
