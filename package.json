@@ -1,0 +1,52 @@
+{
+  "name": "markdown-dynamic-codeblock-loader",
+  "version": "0.0.1",
+  "description": "A Webpack loader that can dynamically replace code blocks with snippets extracted from source files.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimboKZ/markdown-dynamic-codeblock-loader.git"
+  },
+  "keywords": [
+    "webpack-loader",
+    "loader",
+    "markdown",
+    "webpack",
+    "typescript"
+  ],
+  "author": "Tim Kuzhagaliyev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TimboKZ/markdown-dynamic-codeblock-loader/issues"
+  },
+  "homepage": "https://github.com/TimboKZ/markdown-dynamic-codeblock-loader#readme",
+  "peerDependencies": {
+    "webpack": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/loader-utils": "^2.0.1",
+    "@types/schema-utils": "^2.4.0",
+    "@types/webpack": "^4.41.18",
+    "@typescript-eslint/eslint-plugin": "^3.4.0",
+    "@typescript-eslint/parser": "^3.4.0",
+    "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "jest": "^26.1.0",
+    "memfs": "^3.2.0",
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0"
+  },
+  "dependencies": {
+    "loader-utils": "^2.0.0",
+    "schema-utils": "^2.7.0"
+  }
+}

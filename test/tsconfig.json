@@ -1,0 +1,11 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "noImplicitAny": false,
+        "baseUrl": "..",
+        "paths": {
+            "markdown-dynamic-codeblock-loader": ["src/"]
+        }
+    },
+    "include": ["./**/*"]
+}
