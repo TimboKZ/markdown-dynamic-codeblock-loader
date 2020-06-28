@@ -28,6 +28,7 @@
     "webpack": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/types": "^7.10.3",
     "@types/loader-utils": "^2.0.1",
     "@types/schema-utils": "^2.4.0",
     "@types/webpack": "^4.41.18",
@@ -42,6 +43,7 @@
     "memfs": "^3.2.0",
     "prettier": "^2.0.5",
     "ts-jest": "^26.1.1",
+    "tsdef": "0.0.13",
     "typescript": "^3.9.5",
     "webpack": "^4.43.0"
   },

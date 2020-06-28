@@ -19,7 +19,7 @@ const schema = {
     },
 } as const;
 
-const LinebreakRegex = /\r?\n/;
+export const LinebreakRegex = /\r?\n/;
 
 export function loader(this: LoaderContext, source: string): string {
     const options = getOptions(this);

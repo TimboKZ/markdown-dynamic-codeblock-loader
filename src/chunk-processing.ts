@@ -1,12 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import webpack from 'webpack';
+import { stringifyRequest } from 'loader-utils';
+import { extractSymbolLinesFromFile } from './symbol-extraction';
 
 import { CodeChunk } from './types';
 import LoaderContext = webpack.loader.LoaderContext;
 
 export const processCodeChunk = (loaderContext: LoaderContext, chunk: CodeChunk) => {
-    const { jsonConfig } = chunk;
+    const { jsonConfig } = chunk.codeBlock;
     if (!jsonConfig) return;
 
     let config;
@@ -21,22 +23,22 @@ export const processCodeChunk = (loaderContext: LoaderContext, chunk: CodeChunk)
             path.dirname(loaderContext.resourcePath),
             config.file
         );
-        throw Error(filePath);
         if (!fs.existsSync(filePath)) {
             throw new Error(
                 `Provided "file" does not exist. Resolved path: ${filePath}`
             );
         }
 
-        chunk.contents = [filePath];
+        const relativeFilePath = stringifyRequest(loaderContext, filePath);
+        loaderContext.addDependency(relativeFilePath);
+
+        chunk.contents = extractSymbolLinesFromFile(filePath, config.symbol);
         return filePath;
     } catch (error) {
-        chunk.contents = [
-            'An error occurred while parsing the JSON config for this code block:',
-            `> ${error.message}`,
-            'The JSON config was:',
-            jsonConfig,
-        ];
-        return;
+        throw new Error(
+            `An error occurred while parsing the JSON config for the code block on ` +
+                `line ${chunk.codeBlock.start + 1}: ${error.message}` +
+                `\nThe JSON config for the code block was: ${jsonConfig}`
+        );
     }
 };

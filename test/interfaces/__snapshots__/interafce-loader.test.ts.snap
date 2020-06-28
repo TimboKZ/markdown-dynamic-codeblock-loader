@@ -6,11 +6,10 @@ exports[`Inserts name and outputs JavaScript 1`] = `
 This file is used to test that the loader correctly replaces the code blocks below
 with the source snippets referenced in code block config.
 
-\`\`\`ts { \\"file\\", \\"../typescript-source/typedef.ts\\", \\"symbol\\": \\"MyData\\" }
-An error occurred while parsing the JSON config for this code block:
-> Unexpected token , in JSON at position 8
-The JSON config was:
-{ \\"file\\", \\"../typescript-source/typedef.ts\\", \\"symbol\\": \\"MyData\\" }
+\`\`\`ts { \\"file\\": \\"../typescript-source/typedef.ts\\", \\"symbol\\": \\"MyData\\" }
+export interface MyData {
+    color: string; // Hex colour
+}
 \`\`\`
 
 "

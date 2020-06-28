@@ -1,25 +1,18 @@
-import { Chunk, ChunkType } from './types';
+import { Chunk, ChunkType, CodeBlockData } from './types';
 
 const codeBlockStartRegex = /^\s*```([A-Za-z0-9\-_]+)?\s*({\s*.*?\s*})\s*$/;
 const codeBlockEndRegex = /^\s*```\s*$/;
-
-export interface CodeblockData {
-    start: number;
-    end: number;
-    language: string;
-    jsonConfig: string;
-}
 
 /**
  * Scans lines of a Markdown files and detect code blocks, extract info like
  * first/last lines and syntax name.
  */
-export function detectCodeBlocks(lines: string[]): CodeblockData[] {
+export function detectCodeBlocks(lines: string[]): CodeBlockData[] {
     let insideCodeBlock = false;
     let blockStartIndex: number = -1;
     let blockLanguage: string = '';
     let blockJsonConfig: string = '';
-    const codeBlocks: CodeblockData[] = [];
+    const codeBlocks: CodeBlockData[] = [];
 
     for (let lineIndex = 0; lineIndex < lines.length; lineIndex++) {
         const line = lines[lineIndex];
@@ -53,13 +46,13 @@ export function detectCodeBlocks(lines: string[]): CodeblockData[] {
  * Scans lines of Markdown files, breaking it into Markdown and Code chunks
  */
 export const breakMarkdownIntoChunks = (lines: string[]): Chunk[] => {
-    const codeBlockIndices = detectCodeBlocks(lines);
+    const codeBlocks = detectCodeBlocks(lines);
     const markdownChunks: Chunk[] = [];
 
     let markdownStartIndex = 0;
     let markdownSlice = [];
-    for (const block of codeBlockIndices) {
-        const { start, end, language, jsonConfig } = block;
+    for (const block of codeBlocks) {
+        const { start, end } = block;
 
         markdownSlice = lines.slice(markdownStartIndex, start);
         if (markdownSlice.length > 0) {
@@ -71,8 +64,7 @@ export const breakMarkdownIntoChunks = (lines: string[]): Chunk[] => {
 
         markdownChunks.push({
             type: ChunkType.Code,
-            language,
-            jsonConfig,
+            codeBlock: block,
             openingLine: lines[start],
             contents: lines.slice(start + 1, end),
             closingLine: lines[end],
