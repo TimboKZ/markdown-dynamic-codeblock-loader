@@ -1,6 +1,6 @@
 {
   "name": "markdown-dynamic-codeblock-loader",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Webpack loader that can dynamically replace code blocks with snippets extracted from source files.",
   "main": "lib/index.js",
   "scripts": {
@@ -18,7 +18,11 @@
     "webpack",
     "typescript"
   ],
-  "author": "Tim Kuzhagaliyev",
+  "author": {
+    "name": "Timur Kuzhagaliyev",
+    "email": "tim.kuzh@gmail.com",
+    "url": "https://foxypanda.me/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/TimboKZ/markdown-dynamic-codeblock-loader/issues"
