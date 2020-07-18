@@ -4,6 +4,9 @@
   <a href="https://www.npmjs.com/package/markdown-dynamic-codeblock-loader" target="_blank">
     <img alt="NPM package" src="https://img.shields.io/npm/v/markdown-dynamic-codeblock-loader.svg">
   </a>
+  <a href="https://travis-ci.com/github/TimboKZ/markdown-dynamic-codeblock-loader" target="_blank">
+    <img alt="Build status" src="https://travis-ci.com/TimboKZ/markdown-dynamic-codeblock-loader.svg?branch=master">
+  </a>
   <a href="https://tldrlegal.com/license/mit-license" style="margin-left: 5px;" target="_blank">
     <img alt="MIT license" src="https://img.shields.io/npm/l/markdown-dynamic-codeblock-loader">
   </a>
