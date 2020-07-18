@@ -1,6 +1,6 @@
 {
   "name": "markdown-dynamic-codeblock-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Webpack loader that can dynamically replace code blocks with snippets extracted from source files.",
   "main": "lib/index.js",
   "scripts": {
