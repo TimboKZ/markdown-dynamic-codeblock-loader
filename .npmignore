@@ -1,0 +1,7 @@
+src/
+test/
+.eslintrc.js
+.prettierrc.js
+.travis.yml
+jest.config.js
+tsconfig.json
