@@ -21,10 +21,15 @@ export const compiler = (
             rules: [
                 {
                     test: /\.mdx?$/,
-                    use: {
-                        loader: path.resolve(__dirname, '../lib/index.js'),
-                        options,
-                    },
+                    use: [
+                        {
+                            loader: 'raw-loader',
+                        },
+                        {
+                            loader: path.resolve(__dirname, '../lib/index.js'),
+                            options,
+                        },
+                    ],
                 },
             ],
         },

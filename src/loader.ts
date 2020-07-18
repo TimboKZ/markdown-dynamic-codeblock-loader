@@ -43,6 +43,5 @@ export function loader(this: LoaderContext, source: string): string {
     }
 
     const transformedMarkdown = stitchMarkdownChunksIntoMarkdown(chunks);
-
-    return `export default ${JSON.stringify(transformedMarkdown)}`;
+    return transformedMarkdown;
 }

@@ -42,6 +42,7 @@
     "jest": "^26.1.0",
     "memfs": "^3.2.0",
     "prettier": "^2.0.5",
+    "raw-loader": "^4.0.1",
     "ts-jest": "^26.1.1",
     "tsdef": "0.0.13",
     "typescript": "^3.9.5",
