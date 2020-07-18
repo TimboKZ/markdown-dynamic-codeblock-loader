@@ -3,4 +3,5 @@ module.exports = {
     testEnvironment: 'node',
     silent: false,
     verbose: false,
+    snapshotSerializers: ['jest-serializer-ansi'],
 };
