@@ -30,7 +30,7 @@ describe.each([
         (f) => f.startsWith('error.') && f.endsWith('.md')
     );
     const errorInputTestCases = errorInputFiles.map((file) => {
-        return [path.resolve(folderPath, file)];
+        return [file, path.resolve(folderPath, file)];
     });
 
     // Run tests for valid files
@@ -44,9 +44,22 @@ describe.each([
     );
 
     // Run tests for error files
-    it.each(errorInputTestCases)('Invalid file: %s', async (inputFilePath) => {
-        await expect(() =>
-            getTransformedMarkdown(inputFilePath)
-        ).rejects.toThrowErrorMatchingSnapshot();
-    });
+    it.each(errorInputTestCases)(
+        'Invalid file: %s',
+        async (basename, inputFilePath) => {
+            try {
+                await getTransformedMarkdown(inputFilePath);
+            } catch (error) {
+                return;
+            }
+
+            throw new Error(
+                'Expected loader to throw an error, but no error was thrown.'
+            );
+
+            // await expect(() =>
+            //     getTransformedMarkdown(inputFilePath)
+            // ).rejects.toThrowErrorMatchingSnapshot();
+        }
+    );
 });

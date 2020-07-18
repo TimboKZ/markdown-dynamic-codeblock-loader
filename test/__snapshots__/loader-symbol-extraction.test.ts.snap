@@ -1,23 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Correctly extracts JavaScript symbols Invalid file: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-javascript/error.non-existent-file.md 1`] = `
-"./syntax-javascript/error.non-existent-file.md
-Module build failed (from ../lib/index.js):
-Error: Failed to process the code block on line 3: Provided \\"file\\" does not exist. Resolved path: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-javascript/some-non-existent-file.js
-The JSON config for the code block was: { \\"file\\": \\"./some-non-existent-file.js\\", \\"symbol\\": \\"NormalInterface\\" }
-    at Object.exports.processCodeChunk (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/chunk-processing.ts:49:15)
-    at Object.loader (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/loader.ts:42:9)"
-`;
-
-exports[`Correctly extracts JavaScript symbols Invalid file: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-javascript/error.non-existent-type.md 1`] = `
-"./syntax-javascript/error.non-existent-type.md
-Module build failed (from ../lib/index.js):
-Error: Failed to process the code block on line 3: Provided \\"file\\" does not exist. Resolved path: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-javascript/typedef.js
-The JSON config for the code block was: { \\"file\\": \\"./typedef.js\\", \\"symbol\\": \\"SomeNonExistentType\\" }
-    at Object.exports.processCodeChunk (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/chunk-processing.ts:49:15)
-    at Object.loader (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/loader.ts:42:9)"
-`;
-
 exports[`Correctly extracts JavaScript symbols Valid file: valid.arrow-functions.input.md 1`] = `
 "# Arrow functions
 
@@ -116,24 +98,6 @@ export let ExportedSingleLineLet = 'Hello World!'; // Some trailing comment
 \`\`\`
 
 "
-`;
-
-exports[`Correctly extracts TypeScript symbols Invalid file: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-typescript/error.non-existent-file.md 1`] = `
-"./syntax-typescript/error.non-existent-file.md
-Module build failed (from ../lib/index.js):
-Error: Failed to process the code block on line 3: Provided \\"file\\" does not exist. Resolved path: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-typescript/some-non-existent-file.ts
-The JSON config for the code block was: { \\"file\\": \\"./some-non-existent-file.ts\\", \\"symbol\\": \\"NormalInterface\\" }
-    at Object.exports.processCodeChunk (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/chunk-processing.ts:49:15)
-    at Object.loader (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/loader.ts:42:9)"
-`;
-
-exports[`Correctly extracts TypeScript symbols Invalid file: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-typescript/error.non-existent-type.md 1`] = `
-"./syntax-typescript/error.non-existent-type.md
-Module build failed (from ../lib/index.js):
-Error: Failed to process the code block on line 3: Provided \\"file\\" does not exist. Resolved path: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-typescript/typedef.ts
-The JSON config for the code block was: { \\"file\\": \\"./typedef.ts\\", \\"symbol\\": \\"SomeNonExistentType\\" }
-    at Object.exports.processCodeChunk (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/chunk-processing.ts:49:15)
-    at Object.loader (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/loader.ts:42:9)"
 `;
 
 exports[`Correctly extracts TypeScript symbols Valid file: valid.arrow-functions.input.md 1`] = `
