@@ -32,41 +32,46 @@ date with the actual source code.
 
 ### What are the limitations?
 
-At the moment, only top-level interface/type/const/let definitions can be extracted.
+At the moment, only top-level declarations can be extracted.
 Additionally, only TypeScript and JavaScript are supported at this time.
 
 ## The gist
 
-This loader transforms Markdown source code by replacing code blocks with code
-snippets from external source files. Consider the Typescript file below:
+Suppose you have a TypeScript file, `types.ts`, that defines some interfaces:
 
 ```ts
-// Path:  src/types.ts
-export interface MyData {
-    color: string; // Hex colour
+// types.ts
+
+export interface Node {
+    value: number; // Value must be an integer!
+    left?: Node; // Left child
+    right?: Node; // Right child
 }
 
 export type SomeUnrelatedType = string | null;
 ```
 
-You could reference the `MyData` type in your Markdown file, like so:
+You can use special syntax to reference the `Node` interface from `types.ts in your
+Markdown file:
 
-    # My Markdown documentation
+    # Node documentation
 
-    The `data` object has to satisfy the `MyData` type:
+    The interface for nodes is defined as follows:
 
-    ```ts {"file": "src/types.ts", "symbol": "MyData" }
+    ```ts {"file": "types.ts", "symbol": "Node" }
     ```
 
-If you load the file above using `markdown-dynamic-codeblock-loader`, the output
-Markdown will be:
+When you import the Markdown file above using `markdown-dynamic-codeblock-loader`, the
+transformed Markdown output will become:
 
     # My Markdown documentation
 
     The `data` object has to satisfy the `MyData` type:
 
-    ```ts
-    interface MyData {
-        color: string; // Hex colour
+    ```ts {"file": "types.ts", "symbol": "Node" }
+    export interface Node {
+        value: number; // Value must be an integer!
+        left?: Node; // Left child
+        right?: Node; // Right child
     }
     ```
