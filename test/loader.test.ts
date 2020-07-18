@@ -16,7 +16,10 @@ const getTransformedMarkdown = async (markdownFilePath: string): Promise<string>
     return markdownOutput;
 };
 
-describe.each([['TypeScript', './syntax-typescript']])(
+describe.each([
+    ['TypeScript', './syntax-typescript'],
+    ['JavaScript', './syntax-javascript'],
+])(
     'Correctly extracts %s symbols',
     (syntaxName, relFolderPath) => {
         const folderPath = path.resolve(__dirname, relFolderPath);

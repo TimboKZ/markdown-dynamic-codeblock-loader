@@ -1,5 +1,123 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Correctly extracts JavaScript symbols Invalid file: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-javascript/error.non-existent-file.md 1`] = `
+"./syntax-javascript/error.non-existent-file.md
+Module build failed (from ../lib/index.js):
+Error: Failed to process the code block on line 3: Provided \\"file\\" does not exist. Resolved path: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-javascript/some-non-existent-file.js
+The JSON config for the code block was: { \\"file\\": \\"./some-non-existent-file.js\\", \\"symbol\\": \\"NormalInterface\\" }
+    at Object.exports.processCodeChunk (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/chunk-processing.ts:38:15)
+    at Object.loader (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/loader.ts:37:9)"
+`;
+
+exports[`Correctly extracts JavaScript symbols Invalid file: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-javascript/error.non-existent-type.md 1`] = `
+"./syntax-javascript/error.non-existent-type.md
+Module build failed (from ../lib/index.js):
+Error: Failed to process the code block on line 3: Provided \\"file\\" does not exist. Resolved path: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-javascript/typedef.js
+The JSON config for the code block was: { \\"file\\": \\"./typedef.js\\", \\"symbol\\": \\"SomeNonExistentType\\" }
+    at Object.exports.processCodeChunk (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/chunk-processing.ts:38:15)
+    at Object.loader (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/loader.ts:37:9)"
+`;
+
+exports[`Correctly extracts JavaScript symbols Valid file: valid.arrow-functions.input.md 1`] = `
+"# Arrow functions
+
+\`\`\`ts { \\"file\\": \\"./valid.arrow-functions.js\\", \\"symbol\\": \\"SingleLineArrowFunction\\" }
+let SingleLineArrowFunction = () => 123 + 456; // Some trailing comment
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.arrow-functions.js\\", \\"symbol\\": \\"MultiLineArrowFunction\\" }
+let MultiLineArrowFunction = (seed) => {
+    return 4; // Chosen by fair dice roll. Guaranteed to be random.
+};
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.arrow-functions.js\\", \\"symbol\\": \\"ExportedSingleLineArrowFunction\\" }
+export const ExportedSingleLineArrowFunction = () => 123 + 456;
+\`\`\`
+
+"
+`;
+
+exports[`Correctly extracts JavaScript symbols Valid file: valid.const.input.md 1`] = `
+"# \`const\`
+
+\`\`\`ts { \\"file\\": \\"./valid.const.js\\", \\"symbol\\": \\"NormalSingleLineConst\\" }
+const NormalSingleLineConst = 'Hello World!'; // Some trailing comment
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.const.js\\", \\"symbol\\": \\"ConstMultipleVariables\\" }
+const IgnoreMe1,
+    ConstMultipleVariables,
+    IgnoreMe2 = 'Yikes...';
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.const.js\\", \\"symbol\\": \\"NormalMultilineLineConst\\" }
+const NormalMultilineLineConst = [
+    'Francesca', // Findabair
+    'Yennefer', // of Vengergberg
+    'Triss', // Merigold
+    'Ciri', // ...lla Fiona Elen Riannon
+];
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.const.js\\", \\"symbol\\": \\"ExportedSingleLineConst\\" }
+export const ExportedSingleLineConst = 'Hello World!'; // Some trailing comment
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.const.js\\", \\"symbol\\": \\"DefaultExportConst\\" }
+export default DefaultExportConst = 'Hello World!'; // Some trailing comment
+\`\`\`
+
+"
+`;
+
+exports[`Correctly extracts JavaScript symbols Valid file: valid.es5-functions.input.md 1`] = `
+"# ES5 functions
+
+\`\`\`ts { \\"file\\": \\"./valid.es5-functions.js\\", \\"symbol\\": \\"ES5Function\\" }
+function ES5Function(seed: number): number {
+    return 4; // Chosen by fair dice roll. Guaranteed to be random.
+}
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.es5-functions.js\\", \\"symbol\\": \\"ExportedES5Function\\" }
+export function ExportedES5Function(seed: number): number {
+    return 4; // Chosen by fair dice roll. Guaranteed to be random.
+}
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.es5-functions.js\\", \\"symbol\\": \\"DefaultExportES5Function\\" }
+export default function DefaultExportES5Function(seed: number): number {
+    return 4; // Chosen by fair dice roll. Guaranteed to be random.
+}
+\`\`\`
+
+"
+`;
+
+exports[`Correctly extracts JavaScript symbols Valid file: valid.let.input.md 1`] = `
+"# \`let\`
+
+\`\`\`ts { \\"file\\": \\"./valid.let.js\\", \\"symbol\\": \\"NormalSingleLineLet\\" }
+let NormalSingleLineLet = 'Hello World!'; // Some trailing comment
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.let.js\\", \\"symbol\\": \\"NormalMultilineLineLet\\" }
+let NormalMultilineLineLet = [
+    'Francesca', // Findabair
+    'Yennefer', // of Vengergberg
+    'Triss', // Merigold
+    'Ciri', // ...lla Fiona Elen Riannon
+];
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.let.js\\", \\"symbol\\": \\"ExportedSingleLineLet\\" }
+export let ExportedSingleLineLet = 'Hello World!'; // Some trailing comment
+\`\`\`
+
+"
+`;
+
 exports[`Correctly extracts TypeScript symbols Invalid file: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-typescript/error.non-existent-file.md 1`] = `
 "./syntax-typescript/error.non-existent-file.md
 Module build failed (from ../lib/index.js):
