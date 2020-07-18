@@ -1,9 +1,15 @@
 import { createFsFromVolume, Volume } from 'memfs';
 import path from 'path';
+import { Undefinable } from 'tsdef';
 import webpack, { Stats } from 'webpack';
 
+import { LoaderOptions } from '../src/types';
+
 // eslint-disable-next-line
-export default (fixturePath: string): Promise<Stats> => {
+export const compiler = (
+    fixturePath: string,
+    options: Undefinable<LoaderOptions>
+): Promise<Stats> => {
     const compiler = webpack({
         context: __dirname,
         entry: `./${path.relative(__dirname, fixturePath)}`,
@@ -17,9 +23,7 @@ export default (fixturePath: string): Promise<Stats> => {
                     test: /\.mdx?$/,
                     use: {
                         loader: path.resolve(__dirname, '../lib/index.js'),
-                        options: {
-                            name: 'Alice',
-                        },
+                        options,
                     },
                 },
             ],
@@ -41,4 +45,19 @@ export default (fixturePath: string): Promise<Stats> => {
             resolve(stats);
         });
     });
+};
+
+export const getTransformedMarkdown = async (
+    markdownFilePath: string,
+    options: Undefinable<LoaderOptions> = undefined
+): Promise<string> => {
+    const stats = await compiler(markdownFilePath, options);
+    const output = stats.toJson().modules![0].source;
+
+    let markdownOutput = '';
+    if (output) {
+        markdownOutput = output.replace(/^export default/, '').replace(/;$/, '');
+        markdownOutput = JSON.parse(markdownOutput);
+    }
+    return markdownOutput;
 };

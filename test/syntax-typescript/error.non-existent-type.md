@@ -2,4 +2,3 @@
 
 ```ts { "file": "./typedef.ts", "symbol": "SomeNonExistentType" }
 ```
-

@@ -1,4 +1,4 @@
 import webpack from 'webpack';
-import { CodeChunk } from './types';
+import { CodeChunk, PathMapping } from './types';
 import LoaderContext = webpack.loader.LoaderContext;
-export declare const processCodeChunk: (loaderContext: LoaderContext, chunk: CodeChunk) => string | undefined;
+export declare const processCodeChunk: (loaderContext: LoaderContext, chunk: CodeChunk, pathMapping: PathMapping) => string | undefined;

@@ -7,14 +7,19 @@ import {
     stitchMarkdownChunksIntoMarkdown,
 } from './chunk-extraction';
 import { processCodeChunk } from './chunk-processing';
-import { ChunkType } from './types';
+import { ChunkType, PathMapping } from './types';
 import LoaderContext = webpack.loader.LoaderContext;
 
 const schema = {
     type: 'object',
     properties: {
+        // Both keys and values in `mappings` should be strings
         mappings: {
             type: 'object',
+            patternProperties: {
+                '.*?': { type: 'string' },
+            },
+            additionalProperties: false,
         },
     },
 } as const;
@@ -34,7 +39,7 @@ export function loader(this: LoaderContext, source: string): string {
     for (const chunk of chunks) {
         if (chunk.type !== ChunkType.Code) continue;
 
-        processCodeChunk(this, chunk);
+        processCodeChunk(this, chunk, (options.mappings as unknown) as PathMapping);
     }
 
     const transformedMarkdown = stitchMarkdownChunksIntoMarkdown(chunks);

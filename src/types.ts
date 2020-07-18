@@ -1,3 +1,7 @@
+export interface LoaderOptions {
+    mappings: PathMapping;
+}
+
 export interface CodeBlockData {
     start: number;
     end: number;
@@ -24,3 +28,5 @@ export interface CodeChunk {
 }
 
 export type Chunk = MarkdownChunk | CodeChunk;
+
+export type PathMapping = { [name: string]: string };

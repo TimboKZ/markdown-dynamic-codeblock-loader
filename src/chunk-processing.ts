@@ -1,13 +1,17 @@
 import fs from 'fs';
+import { stringifyRequest } from 'loader-utils';
 import path from 'path';
 import webpack from 'webpack';
-import { stringifyRequest } from 'loader-utils';
 import { extractSymbolLinesFromFile } from './symbol-extraction';
 
-import { CodeChunk } from './types';
+import { CodeChunk, PathMapping } from './types';
 import LoaderContext = webpack.loader.LoaderContext;
 
-export const processCodeChunk = (loaderContext: LoaderContext, chunk: CodeChunk) => {
+export const processCodeChunk = (
+    loaderContext: LoaderContext,
+    chunk: CodeChunk,
+    pathMapping: PathMapping
+) => {
     const { jsonConfig } = chunk.codeBlock;
     if (!jsonConfig) return;
 
@@ -19,9 +23,16 @@ export const processCodeChunk = (loaderContext: LoaderContext, chunk: CodeChunk)
             throw new Error('Config should specify both "file" and "symbol" fields.');
         }
 
+        // Apply path mappings provided through loader options
+        let expandedPath = config.file;
+        for (const token in pathMapping) {
+            if (!pathMapping.hasOwnProperty(token)) continue;
+            expandedPath = expandedPath.replace(`<${token}>`, pathMapping[token]);
+        }
+
         const filePath = path.resolve(
             path.dirname(loaderContext.resourcePath),
-            config.file
+            expandedPath
         );
         if (!fs.existsSync(filePath)) {
             throw new Error(
