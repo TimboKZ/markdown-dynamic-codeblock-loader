@@ -36,8 +36,8 @@ export const processCodeChunk = (loaderContext: LoaderContext, chunk: CodeChunk)
         return filePath;
     } catch (error) {
         throw new Error(
-            `An error occurred while parsing the JSON config for the code block on ` +
-                `line ${chunk.codeBlock.start + 1}: ${error.message}` +
+            `Failed to process the code block on line ${chunk.codeBlock.start + 1}: ` +
+                `${error.message}` +
                 `\nThe JSON config for the code block was: ${jsonConfig}`
         );
     }

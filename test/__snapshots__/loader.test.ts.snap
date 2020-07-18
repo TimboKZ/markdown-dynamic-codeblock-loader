@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Correctly extracts TypeScript symbols Invalid file: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-typescript/error.non-existent-file.md 1`] = `
+"./syntax-typescript/error.non-existent-file.md
+Module build failed (from ../lib/index.js):
+Error: Failed to process the code block on line 3: Provided \\"file\\" does not exist. Resolved path: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-typescript/some-non-existent-file.ts
+The JSON config for the code block was: { \\"file\\": \\"./some-non-existent-file.ts\\", \\"symbol\\": \\"NormalInterface\\" }
+    at Object.exports.processCodeChunk (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/chunk-processing.ts:38:15)
+    at Object.loader (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/loader.ts:37:9)"
+`;
+
+exports[`Correctly extracts TypeScript symbols Invalid file: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-typescript/error.non-existent-type.md 1`] = `
+"./syntax-typescript/error.non-existent-type.md
+Module build failed (from ../lib/index.js):
+Error: Failed to process the code block on line 3: Provided \\"file\\" does not exist. Resolved path: /home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/test/syntax-typescript/typedef.ts
+The JSON config for the code block was: { \\"file\\": \\"./typedef.ts\\", \\"symbol\\": \\"SomeNonExistentType\\" }
+    at Object.exports.processCodeChunk (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/chunk-processing.ts:38:15)
+    at Object.loader (/home/euql1n/Workspaces/personal/markdown-dynamic-codeblock-loader/src/loader.ts:37:9)"
+`;
+
+exports[`Correctly extracts TypeScript symbols Valid file: valid.arrow-functions.input.md 1`] = `
+"# Arrow functions
+
+\`\`\`ts { \\"file\\": \\"./valid.arrow-functions.ts\\", \\"symbol\\": \\"SingleLineArrowFunction\\" }
+let SingleLineArrowFunction = () => 123 + 456; // Some trailing comment
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.arrow-functions.ts\\", \\"symbol\\": \\"MultiLineArrowFunction\\" }
+let MultiLineArrowFunction = (seed: number): number => {
+    return 4; // Chosen by fair dice roll. Guaranteed to be random.
+};
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.arrow-functions.ts\\", \\"symbol\\": \\"ExportedSingleLineArrowFunction\\" }
+export const ExportedSingleLineArrowFunction = () => 123 + 456;
+\`\`\`
+
+"
+`;
+
+exports[`Correctly extracts TypeScript symbols Valid file: valid.const.input.md 1`] = `
+"# \`const\`
+
+\`\`\`ts { \\"file\\": \\"./valid.const.ts\\", \\"symbol\\": \\"NormalSingleLineConst\\" }
+const NormalSingleLineConst = 'Hello World!'; // Some trailing comment
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.const.ts\\", \\"symbol\\": \\"ConstMultipleVariables\\" }
+const IgnoreMe1,
+    ConstMultipleVariables,
+    IgnoreMe2 = 'Yikes...';
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.const.ts\\", \\"symbol\\": \\"NormalMultilineLineConst\\" }
+const NormalMultilineLineConst = [
+    'Francesca', // Findabair
+    'Yennefer', // of Vengergberg
+    'Triss', // Merigold
+    'Ciri', // ...lla Fiona Elen Riannon
+];
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.const.ts\\", \\"symbol\\": \\"ExportedSingleLineConst\\" }
+export const ExportedSingleLineConst = 'Hello World!'; // Some trailing comment
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.const.ts\\", \\"symbol\\": \\"DefaultExportConst\\" }
+export default DefaultExportConst = 'Hello World!'; // Some trailing comment
+\`\`\`
+
+"
+`;
+
+exports[`Correctly extracts TypeScript symbols Valid file: valid.enums.input.md 1`] = `
+"# Enums
+
+\`\`\`ts { \\"file\\": \\"./valid.enums.ts\\", \\"symbol\\": \\"NormalEnum\\" }
+enum NormalEnum {
+    Foo = 'bar',
+    Bar = 'foo',
+}
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.enums.ts\\", \\"symbol\\": \\"ExportedEnum\\" }
+export enum ExportedEnum {
+    Foo = 'bar',
+    Bar = 'foo',
+}
+\`\`\`
+
+"
+`;
+
+exports[`Correctly extracts TypeScript symbols Valid file: valid.es5-functions.input.md 1`] = `
+"# ES5 functions
+
+\`\`\`ts { \\"file\\": \\"./valid.es5-functions.ts\\", \\"symbol\\": \\"ES5Function\\" }
+function ES5Function(seed: number): number {
+    return 4; // Chosen by fair dice roll. Guaranteed to be random.
+}
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.es5-functions.ts\\", \\"symbol\\": \\"ExportedES5Function\\" }
+export function ExportedES5Function(seed: number): number {
+    return 4; // Chosen by fair dice roll. Guaranteed to be random.
+}
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.es5-functions.ts\\", \\"symbol\\": \\"DefaultExportES5Function\\" }
+export default function DefaultExportES5Function(seed: number): number {
+    return 4; // Chosen by fair dice roll. Guaranteed to be random.
+}
+\`\`\`
+
+"
+`;
+
+exports[`Correctly extracts TypeScript symbols Valid file: valid.interfaces.input.md 1`] = `
+"# Interfaces
+
+\`\`\`ts { \\"file\\": \\"./valid.interfaces.ts\\", \\"symbol\\": \\"NormalInterface\\" }
+interface NormalInterface {
+    color: string; // Hex colour
+}
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.interfaces.ts\\", \\"symbol\\": \\"GenericInterface\\" }
+interface GenericInterface<T> {
+    color: T; // Hex colour
+}
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.interfaces.ts\\", \\"symbol\\": \\"ExportedInterface\\" }
+export interface ExportedInterface {
+    color: string; // Hex colour
+}
+\`\`\`
+
+"
+`;
+
+exports[`Correctly extracts TypeScript symbols Valid file: valid.let.input.md 1`] = `
+"# \`let\`
+
+\`\`\`ts { \\"file\\": \\"./valid.let.ts\\", \\"symbol\\": \\"NormalSingleLineLet\\" }
+let NormalSingleLineLet = 'Hello World!'; // Some trailing comment
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.let.ts\\", \\"symbol\\": \\"NormalMultilineLineLet\\" }
+let NormalMultilineLineLet = [
+    'Francesca', // Findabair
+    'Yennefer', // of Vengergberg
+    'Triss', // Merigold
+    'Ciri', // ...lla Fiona Elen Riannon
+];
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.let.ts\\", \\"symbol\\": \\"ExportedSingleLineLet\\" }
+export let ExportedSingleLineLet = 'Hello World!'; // Some trailing comment
+\`\`\`
+
+"
+`;
+
+exports[`Correctly extracts TypeScript symbols Valid file: valid.types.input.md 1`] = `
+"# Types
+
+\`\`\`ts { \\"file\\": \\"./valid.types.ts\\", \\"symbol\\": \\"NormalSingleLineType\\" }
+type NormalSingleLineType = string | number | undefined;
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.types.ts\\", \\"symbol\\": \\"NormalMultiLineType\\" }
+type NormalMultiLineType = {
+    // My comment
+    [id: string]: string; // My other comment
+};
+\`\`\`
+
+\`\`\`ts { \\"file\\": \\"./valid.types.ts\\", \\"symbol\\": \\"ExportedSingleLineType\\" }
+export type ExportedSingleLineType = string | number | undefined;
+\`\`\`
+
+"
+`;
